@@ -11,7 +11,7 @@ from langchain_core.output_parsers import StrOutputParser
 
 load_dotenv()
 
-st.title("🏭 Al Seer Supply Chain Q&A")
+st.title("🏭 MZ Supply Chain Q&A")
 st.write("Ask questions about inventory, expiry, and brand performance!")
 
 @st.cache_resource
@@ -20,7 +20,7 @@ def load_rag():
     documents = loader.load()
     embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
     vectorstore = Chroma.from_documents(documents, embeddings)
-    retriever = vectorstore.as_retriever(search_kwargs={"k": 50})
+    retriever = vectorstore.as_retriever(search_kwargs={"k": 200})
     llm = ChatGroq(
         groq_api_key=os.getenv("GROQ_API_KEY"),
         model_name="llama-3.3-70b-versatile"
