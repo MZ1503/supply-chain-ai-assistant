@@ -16,7 +16,7 @@ st.write("Ask questions about inventory, expiry, and brand performance!")
 
 @st.cache_resource
 def load_rag():
-    loader = CSVLoader("../al-seer-data-pipeline/data/my_actual_alseer_portfolio.csv")
+    loader = CSVLoader("data/my_actual_alseer_portfolio.csv")
     documents = loader.load()
     embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
     vectorstore = Chroma.from_documents(documents, embeddings)
