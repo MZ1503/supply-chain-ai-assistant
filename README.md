@@ -1,4 +1,4 @@
-#Supply Chain RAG Q&A System (Need to Fine-Tune)
+ MZ Supply Chain RAG Q&A System (Need to Fine-Tune)
 
 ## What it does
 Natural language Q&A system on 10,000 rows of FMCG supply chain data.
@@ -27,3 +27,5 @@ User Question → Retriever → Prompt → Groq LLM → Answer
 pip install -r requirements.txt
 streamlit run app.py
 
+## Here's the link to the app:
+https://rag-supply-chain-mariyam.streamlit.app
