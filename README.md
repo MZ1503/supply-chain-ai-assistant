@@ -5,7 +5,6 @@ Natural language Q&A system on 10,000 rows of FMCG supply chain data.
 
 Ask questions like:
 - "Which brand has most expired products?"
-- "What is the total revenue by category?"
 - "Which products are expiring soon?"
 
 ## Tech Stack
