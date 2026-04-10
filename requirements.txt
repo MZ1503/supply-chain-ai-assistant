@@ -6,3 +6,6 @@ langchain-huggingface
 sentence-transformers
 chromadb
 python-dotenv
+langchain-experimental
+tabulate
+pandas

@@ -1,29 +1,25 @@
-#Supply Chain RAG Q&A System (Need to Fine-Tune)
+# MZ Supply Chain Q&A
+A natural language query engine that answers in plain English about the inventory data.
 
-## What it does
-Natural language Q&A system on 10,000 rows of FMCG supply chain data.
+#Description:
+This bot can help in answering questions about your inventory data in a natural language which automates the manual excel based calculation. Its useful for higher management or managers who wants quick answers and an overview about the inventory.
 
-Ask questions like:
-- "Which brand has most expired products?"
-- "What is the total revenue by category?"
-- "Which products are expiring soon?"
-
-## Tech Stack
-- Python
-- LangChain
-- Groq LLM (Llama 3)
-- ChromaDB
-- HuggingFace Embeddings
+# Tech Tools
+- LangChain Pandas Agent 
+- Groq LLaMA-3 70B
 - Streamlit
+- Python
 
-## Architecture
+# Architecture
+Initially, I built this bot using RAG. However, I realized that RAG uses semantic similiarity search which cannot do aggregatios, count and calculations. Therefore I used Pandas Agent for a structured and calculated output.
 
-CSV Data → CSVLoader → HuggingFace Embeddings → ChromaDB
-                                                     ↓
-User Question → Retriever → Prompt → Groq LLM → Answer
+# Installation
+1. Clone the repo
+2. Install dependencies: pip install -r requirements.txt
+3. Add your API keys to .env
+4. Run: streamlit run app.py
 
-
-## How to run
-pip install -r requirements.txt
-streamlit run app.py
-
+## Questions I have tested on
+1. Which brands have the most expired products?
+2. How many products are expired?
+3. How many rows are in the inventory?  
