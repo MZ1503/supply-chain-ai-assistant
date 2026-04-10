@@ -9,3 +9,5 @@ python-dotenv
 langchain-experimental
 tabulate
 pandas
+fastapi
+langchain-openai
