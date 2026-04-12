@@ -28,3 +28,16 @@ Order in the file:
 10. @app.post("/query") endpoint ← calls both functions
 
 Define the helper functions before the code that uses them. It makes the file's readibility easier.
+
+
+runs-on: ubuntu-latest
+GitHub Actions runs your pipeline on a fresh virtual machine in the cloud. You choose which operating system that machine uses.
+
+Why Linux and not Windows? Because:
+
+Most production servers run Linux
+Docker works best on Linux
+It is free on GitHub Actions
+Faster than Windows
+
+Every time you push code GitHub creates a fresh Ubuntu machine, runs your 4 steps, and destroys it. Clean slate every time.
