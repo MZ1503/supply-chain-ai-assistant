@@ -10,3 +10,4 @@ tabulate
 python-dotenv
 pydantic
 pytest
+requests

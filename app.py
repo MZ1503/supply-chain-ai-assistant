@@ -1,4 +1,5 @@
 import streamlit as st
+import requests
 import os
 from dotenv import load_dotenv
 from rag_pipeline import agent #this has llm inside it
@@ -6,13 +7,17 @@ from rag_pipeline import agent #this has llm inside it
 #load env
 load_dotenv()
 
-st.title("🏭 MZ Supply Chain Q&A")
+st.title("🏭 MZ Supply Chain AI Assistant")
 
 # Ask questions
 question=st.text_input("Ask questions about inventory data:")
 
 if question:
     with st.spinner("Analyzing..."):
-       result=agent.invoke(question)
-       st.write(result["output"])
+       response=requests.post(
+           "https://supply-chain-ai-assistant.up.railway.app/query",
+            json={"question": question}
+       )
+       result = response.json()
+       st.success(result["answer"])
 
