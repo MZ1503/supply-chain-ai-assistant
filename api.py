@@ -47,7 +47,7 @@ def format_answer(metric_key:str, metrics: dict) -> str:
         "products_zero_stock":f"There are {len(metrics['products_zero_stock'])} products with zero stock.",
         "expiry_rate_brand":f"Expiry rates by brand: {metrics['expiry_rate_brand']}.",
         "urgent_brands": f"Brands needing urgent attention: {','.join(metrics['urgent_brands'])}.",
-        "top_10_products":  f"Top 10 products by value: {metrics['top_10_products']}."
+        "top_10_products": ",".join([f"{p['BRAND']} ({p['CATEGORY']}): AED {p['REVENUE']:,.0f}"for p in metrics['top_10_products']])
     }
 
     return answers.get(metric_key,"I didn't quite understand! Shall we try again?")

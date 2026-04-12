@@ -1,11 +1,6 @@
 import streamlit as st
 import requests
-import os
-from dotenv import load_dotenv
-from rag_pipeline import agent #this has llm inside it
 
-#load env
-load_dotenv()
 
 st.title("🏭 MZ Supply Chain AI Assistant")
 
