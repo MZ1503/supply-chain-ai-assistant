@@ -10,3 +10,21 @@ It writes the python code to make calculations, LangChain cannot do calculations
 
 Q4)What is the difference between a chain and an agent?
 chain is like an assembly line, it follows the same steps everytime, no decision making of its own. agent is like a human analyst who chooses the approach based on the question, it thinks and understands the situation, which tool to use, reads the result.
+
+Q5)Why removed verbose from api.py file now?
+verbose=os.getenv("VERBOSE","FALSE")=="True" #  Verbose was for CSV Agent to show the thinking step in the terminal. ChatOpenAI doesn't use that parameter 
+
+Order in the file:
+
+1. Imports
+2. load_dotenv()
+3. app = FastAPI()
+4. inventory = Inventory(...)
+5. client = ChatOpenAI(...)
+6. QueryRequest class
+7. QueryResponse class
+8. classify_intent function ← before endpoint
+9. format_answer function ← before endpoint
+10. @app.post("/query") endpoint ← calls both functions
+
+Define the helper functions before the code that uses them. It makes the file's readibility easier.

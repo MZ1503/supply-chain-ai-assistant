@@ -6,7 +6,9 @@ class Inventory:
     
         #LOAD CSV
         self.df=pd.read_csv(csv_path)
-        self.metrics=self._calculate_metrics()
+        self.metrics=self._calculate_metrics() #stores the dictionary of all 10 calculated metrics.It is an attribute of the class/variable that belongs to the object.
+
+
         #Data validation
         print(self.df.isnull().sum())
         print(self.df.shape)
