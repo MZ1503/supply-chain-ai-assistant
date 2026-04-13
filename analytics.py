@@ -21,7 +21,6 @@ class Inventory:
          #1. How many products are expired?
         expired=self.df[self.df['DAYS_TO_EXPIRY']<0]
 
-
          #2. Which products are expiring in the next 7 days?
         exp_seven_days=self.df[(self.df['DAYS_TO_EXPIRY']>0 ) & (self.df['DAYS_TO_EXPIRY']<7)]
         
