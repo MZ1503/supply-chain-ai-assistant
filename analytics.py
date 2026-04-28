@@ -61,6 +61,7 @@ class Inventory:
         "expiry_rate_brand":expiry_rate.to_dict(), #why dict? why not list?
         "urgent_brands": expiry_rate[expiry_rate > 20].index.tolist(),
         "top_10_products": top_10_products[['BRAND', 'CATEGORY', 'ACTUAL_QTY', 'REVENUE']].to_dict('records')
+               
                }
 
 if __name__ == "__main__":

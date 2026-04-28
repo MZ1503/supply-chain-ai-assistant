@@ -1,5 +1,5 @@
 import os
-from fastapi import FastAPI
+from fastapi import FastAPI,HTTPException
 from pydantic import BaseModel
 from  analytics import Inventory
 from dotenv import load_dotenv
@@ -54,9 +54,17 @@ def format_answer(metric_key:str, metrics: dict) -> str:
 
 @app.post("/query") #decorator
 def query(request: QueryRequest):
-      metric_key=classify_intent(request.question)
-      answer=format_answer(metric_key,inventory.metrics)
-      return QueryResponse(answer=answer)
+    try:
+        if not request.question.strip():
+            raise ValueError("Question cannot be empty")
+        
+            metric_key=classify_intent(request.question)
+            answer=format_answer(metric_key,inventory.metrics)
+            return QueryResponse(answer=answer)
+    except ValueError as e:
+         raise HTTPException(status_code=400,detail=str(e))
+    except Exception as e:
+        raise HTTPException(status_code=500, detail="Something went wrong")
 
 
 
