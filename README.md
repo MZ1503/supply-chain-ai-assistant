@@ -5,6 +5,7 @@ Natural language inventory analytics platform enables logistics managers to quer
 # Live Links
 API: https://supply-chain-ai-assistant.up.railway.app/docs
 Demo: https://huggingface.co/spaces/YOUR_USERNAME/supply-chain-ai-assistant
+AWS EC2: http://3.123.36.250:8000/docs
 
 # Why I built this tool?
 I spent around 4 years in logistics and supply chain and in one of the previous companies as a Supply Chain Analyst, I handled around 1000+ SKU's demand and supply. I had to manually check the inventory data in Excel. Create expiry and inventory analysis reports. This tool is based out of that frustation of doing manual job especially being an Engineer and in the world of AI. 
@@ -42,6 +43,7 @@ The Agentic pattern used in this project is intent classification with routing w
 - Docker — containerization
 - GitHub Actions — CI/CD pipeline
 - Railway — production deployment
+- Deployed on AWS EC2 with Amazon ECR
 - Streamlit — interactive frontend
 
 ## Architecture
