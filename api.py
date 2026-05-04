@@ -8,6 +8,9 @@ from langchain_openai import ChatOpenAI
 #Load dotenv
 load_dotenv()
 app=FastAPI() #Creating instance of FASTAPI()
+@app.get("/health")
+def health():
+    return {"status": "healthy"}
 inventory=Inventory("data/my_actual_alseer_portfolio.csv")
 client=ChatOpenAI(openai_api_key=os.getenv("OPENAI_API_KEY"),
                   model="gpt-4o-mini",
@@ -58,9 +61,9 @@ def query(request: QueryRequest):
         if not request.question.strip():
             raise ValueError("Question cannot be empty")
         
-            metric_key=classify_intent(request.question)
-            answer=format_answer(metric_key,inventory.metrics)
-            return QueryResponse(answer=answer)
+        metric_key=classify_intent(request.question)
+        answer=format_answer(metric_key,inventory.metrics)
+        return QueryResponse(answer=answer)
     except ValueError as e:
          raise HTTPException(status_code=400,detail=str(e))
     except Exception as e:
