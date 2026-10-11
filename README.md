@@ -7,6 +7,8 @@
 ![FastAPI](https://img.shields.io/badge/FastAPI-009688)
 ![Docker](https://img.shields.io/badge/docker-API%20image-2496ED)
 
+**[Watch the 90-second demo](https://youtu.be/zwY4hbsf_40)**
+
 ![Streamlit app answering an inventory question](docs/screenshot.png)
 
 > **Deployment note:** The API was deployed on AWS EC2 using Docker and Amazon ECR, with a GitHub Actions CI/CD pipeline. I have taken the instance down to avoid ongoing costs, so there is no live link. It runs locally (see [Run it locally](#run-it-locally)).
