@@ -7,6 +7,8 @@
 ![FastAPI](https://img.shields.io/badge/FastAPI-009688)
 ![Docker](https://img.shields.io/badge/docker-API%20image-2496ED)
 
+![Streamlit app answering an inventory question](docs/screenshot.png)
+
 > **Deployment note:** The API was deployed on AWS EC2 using Docker and Amazon ECR, with a GitHub Actions CI/CD pipeline. I have taken the instance down to avoid ongoing costs, so there is no live link. It runs locally (see [Run it locally](#run-it-locally)).
 
 ---
@@ -44,6 +46,8 @@ flowchart LR
     OUT --> S
 ```
 
+![API log: first request calls OpenAI, repeat is served from Redis](docs/cache-proof.png)
+
 1. Streamlit sends the question to the FastAPI backend.
 2. Redis is checked first. The cache key is the question text (trimmed and lowercased), and entries expire after 1 hour, so repeated questions return instantly without another LLM call.
 3. On a miss, GPT-4o-mini classifies the question into one of the predefined metrics.
@@ -57,7 +61,7 @@ My first version used RAG with LangChain, ChromaDB and Groq (LLaMA-3). It failed
 - **Context limits.** With 10,000 rows on the free tier, the model only captured about 50 rows, so answers were based on a fraction of the data.
 - **Wrong tool for the job.** RAG retrieves by semantic similarity. Questions like "total inventory value" or "which brand has the most expired stock" are calculations, not similarity searches.
 
-I also tried a Pandas agent (see `experiments/pandas_agent_v1.py`), but it was abandoned because of context window limits with 10,000+ rows.
+I also tried a Pandas agent (see `experiments/pandas_v1.py`), but it was abandoned because of context window limits with 10,000+ rows.
 
 The final design separates the two jobs: **the LLM only understands the question; Pandas does the maths.** Metrics are pre-calculated in code, so the numbers come from the data, not from the model.
 
