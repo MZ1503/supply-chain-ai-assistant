@@ -107,7 +107,8 @@ cd supply-chain-ai-assistant
 python -m venv venv
 venv\Scripts\activate         # Windows
 source venv/bin/activate      # Mac/Linux
-pip install -r requirements.txt
+
+pip install -r requirements-dev.txt
 
 cp .env.example .env          # add your OpenAI API key to .env
 docker run -p 6379:6379 redis # start Redis (or use a local Redis install)
@@ -116,8 +117,8 @@ docker run -p 6379:6379 redis # start Redis (or use a local Redis install)
 Then start the API and the frontend in two terminals:
 
 ```bash
-uvicorn api:app --reload      # terminal 1
-streamlit run app.py          # terminal 2
+python -m uvicorn api:app --reload      # terminal 1
+python -m streamlit run streamlit_app.py # terminal 2
 ```
 
 Open `http://localhost:8501` for the app, or `http://localhost:8000/docs` for the API.

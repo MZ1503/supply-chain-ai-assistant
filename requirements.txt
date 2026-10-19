@@ -9,6 +9,7 @@ pandas
 tabulate
 python-dotenv
 pydantic
-pytest
 requests
 redis
+python-jose[cryptography]
+passlib[bcrypt]
